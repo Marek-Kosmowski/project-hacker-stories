@@ -47,12 +47,26 @@ const List = () => (
 );
 
 //creating new component Search
-const Search = () => (
-  <div>
-    <label htmlFor='search'>Search: </label>
-    <input id='search' type='text' placeholder='write something' />
-  </div>
-);
+const Search = () => {
+  const handleChange = (event) => {
+    // synthetic event
+    console.log(event);
+    // value of the target(here:element)
+    console.log(event.target.value);
+  };
+  return (
+    <div>
+      <label htmlFor='search'>Search: </label>
+      <input
+        id='search'
+        type='text'
+        onChange={handleChange}
+        onBlur={handleChange}
+        placeholder='write something'
+      />
+    </div>
+  );
+};
 
 const App = () => (
   <div>
