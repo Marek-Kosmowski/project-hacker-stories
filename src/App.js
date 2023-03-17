@@ -5,13 +5,9 @@ import * as React from 'react';
 //   title: 'React',
 // };
 
-function getTitle(title) {
-  return title;
-}
+const getTitle = (title) => title;
 const myArray = ['My', 'name', 'is', 'Marek'];
-const getName = myArray.map((el) => {
-  return el;
-});
+const getName = myArray.map((el) => el);
 
 const list = [
   {
@@ -31,33 +27,53 @@ const list = [
     objectID: 1,
   },
 ];
+//creating new component List
+// declaration of List component
+const List = () => (
+  <ul>
+    {list.map((item) => {
+      return (
+        <li key={item.objectID}>
+          <span>
+            <a href={item.url}>{item.title} </a>
+          </span>
+          <span>{item.author} </span>
+          <span>{item.num_comments} </span>
+          <span>{item.points}</span>
+        </li>
+      );
+    })}
+  </ul>
+);
 
-function App() {
-  return (
-    <div>
-      {/* <h1>{welcome.greeting} {welcome.title}</h1> */}
-      <h1>
-        {getName} and this is {getTitle('React')}{' '}
-      </h1>
+//creating new component Search
+const Search = () => (
+  <div>
+    <label htmlFor='search'>Search: </label>
+    <input id='search' type='text' placeholder='write something' />
+  </div>
+);
 
-      <label htmlFor='search'>Search: </label>
-      <input id='search' type='text' placeholder='write something' />
-      <ul>
-        {list.map((item) => {
-          return (
-            <li key={item.objectID}>
-              <span>
-                <a href={item.url}>{item.title} </a>
-              </span>
-              <span>{item.author} </span>
-              <span>{item.num_comments} </span>
-              <span>{item.points}</span>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    {/* <h1>{welcome.greeting} {welcome.title}</h1> */}
+    <h1>
+      {getName} and this is {getTitle('React')}{' '}
+    </h1>
+    <Search />
+    <hr />
+    {/* creating instance of List component */}
+    <List />
+    <hr />
+    <List />
+    <hr />
+    <List />
+    <hr />
+    <List />
+    <hr />
+    <List />
+    <hr />
+  </div>
+);
 
 export default App;
